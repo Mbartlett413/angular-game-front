@@ -11,16 +11,17 @@
     </div>
 </div>
 
-<div class="show_element" *ngIf="display_show">
+<div class="show_element" *ngIf="display_show" (click)="toggleModal()">
     <div class="modal-content">
     <button type="button" (click)="toggleModal()" class="btn btn-danger">Close</button>
-    <p> {{ game?.id }}</p>
-    <p> {{ game?.description }}</p>
-    <p> {{ game?.manufacturer }}</p>
-    <p> {{ game?.year }}</p>
-    <p> {{ game?.active }}</p>
-    <p> {{ game?.created_at }}</p>
-    <p> {{ game_likes }}</p>
+    <p>ID: {{ game?.id }}</p>
+    <p>Description: {{ game?.description }}</p>
+    <p>Manufacturer: {{ game?.manufacturer }}</p>
+    <p>Year: {{ game?.year }}</p>
+    <p>Active: {{ game?.active }}</p>
+    <p>Created_at: {{ game?.created_at }}</p>
+    <p>Likes: {{ game_likes }}</p>
+    <img [src]="transform()">
     <button type="button" (click)="likeGame()" class="btn btn-danger">Like Game</button>
     </div>
 </div>
