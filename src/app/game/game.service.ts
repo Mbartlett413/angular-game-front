@@ -11,7 +11,8 @@ import { Game } from './game';
 })
 export class GameService {
 
-  private apiURL = 'localhost:3000/api/v1/';
+  private apiURL2 = 'localhost:3000/api/v1/';
+  private apiURL = 'http://localhost:3000/';
 
   httpOptions = {
     headers: new HttpHeaders({

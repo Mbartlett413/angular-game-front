@@ -1,1 +1,26 @@
-<p>Grid it up</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3 grid" *ngFor="let game of games; let i = index">
+            <p>ID: {{game.id}}</p>
+            <p>Name: {{game.name}}</p>
+            <p>Year: {{game.year}}</p>
+            <p>Manufacturer: {{game.manufacturer}}</p>
+            <button type="button" (click)="showGame(game.id)" class="btn btn-danger">show more</button>
+        </div>
+    </div>
+</div>
+
+<div class="show_element" *ngIf="display_show">
+    <div class="modal-content">
+    <button type="button" (click)="toggleModal()" class="btn btn-danger">Close</button>
+    <p> {{ game?.id }}</p>
+    <p> {{ game?.description }}</p>
+    <p> {{ game?.manufacturer }}</p>
+    <p> {{ game?.year }}</p>
+    <p> {{ game?.active }}</p>
+    <p> {{ game?.created_at }}</p>
+    <p> {{ game_likes }}</p>
+    <button type="button" (click)="likeGame()" class="btn btn-danger">Like Game</button>
+    </div>
+</div>
