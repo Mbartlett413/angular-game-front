@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
 import { Game } from '../game';
-import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient  } from '@angular/common/http';
 
 
@@ -17,11 +16,10 @@ export class IndexComponent implements OnInit {
   display_show = false;
   selected_id: number = 0;
   game_likes: String = "";
-  ipAddress: String = "";
-  image_path: any;
+  ipAddress: String = ""; 
+  image_path: String = "https://www.metalgearinformer.com/wp-content/uploads/2014/10/Figma-Metal-Gear-Solid-2-Snake-8.jpg";
 
   constructor(public gameService: GameService,
-              private sanitizer: DomSanitizer,
               private http:HttpClient) { }
 
   ngOnInit(): void {
@@ -37,7 +35,11 @@ export class IndexComponent implements OnInit {
       this.game = data.game;
       this.selected_id = data.game.id;
       this.game_likes = data.likes;
-      this.image_path = 'data:image/png;base64, ' + data.image ;
+      if( data.image != null ){
+        this.image_path = data.image;
+      }else{
+        this.image_path = "https://www.metalgearinformer.com/wp-content/uploads/2014/10/Figma-Metal-Gear-Solid-2-Snake-8.jpg";
+      }
     });
   }
 
@@ -53,10 +55,6 @@ export class IndexComponent implements OnInit {
 
   toggleModal(){
     this.display_show = !this.display_show
-  }
-
-  transform(){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.image_path);
   }
 
   getIPAddress(){
