@@ -11,7 +11,6 @@ import { Game } from './game';
 })
 export class GameService {
 
-  private apiURL2 = 'localhost:3000/api/v1/';
   private apiURL = 'http://localhost:3000/';
 
   httpOptions = {
@@ -35,7 +34,7 @@ export class GameService {
 
   update(id:number, ip_address:String): Observable<any> {
 
-    return this.httpClient.post(this.apiURL + '/games/' + id + '/like_game', JSON.stringify([id, ip_address]), this.httpOptions)
+    return this.httpClient.post(this.apiURL + '/games/' + id + '/like_game', JSON.stringify({ip: ip_address}), this.httpOptions)
 
     .pipe(
       catchError(this.errorHandler)

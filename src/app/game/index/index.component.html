@@ -2,26 +2,33 @@
 <div class="container">
     <div class="row">
         <div class="col-3 grid" *ngFor="let game of games; let i = index">
-            <p>ID: {{game.id}}</p>
             <p>Name: {{game.name}}</p>
             <p>Year: {{game.year}}</p>
             <p>Manufacturer: {{game.manufacturer}}</p>
-            <button type="button" (click)="showGame(game.id)" class="btn btn-danger">show more</button>
+            <button type="button" (click)="showGame(game.id)" class="btn btn-info">show more</button>
         </div>
     </div>
 </div>
 
-<div class="show_element" *ngIf="display_show" (click)="toggleModal()">
+<div class="show_element" *ngIf="display_show">
     <div class="modal-content">
-    <button type="button" (click)="toggleModal()" class="btn btn-danger">Close</button>
-    <p>ID: {{ game?.id }}</p>
-    <p>Description: {{ game?.description }}</p>
-    <p>Manufacturer: {{ game?.manufacturer }}</p>
-    <p>Year: {{ game?.year }}</p>
-    <p>Active: {{ game?.active }}</p>
-    <p>Created_at: {{ game?.created_at }}</p>
-    <p>Likes: {{ game_likes }}</p>
-    <img [src]="transform()">
-    <button type="button" (click)="likeGame()" class="btn btn-danger">Like Game</button>
+        <div class="row">
+            <div class="col-6">
+                <p>Name: {{ game?.name }}</p>
+                <p>Description: {{ game?.description }}</p>
+                <p>Year: {{ game?.year }}</p>
+                <p>Manufacturer: {{ game?.manufacturer }}</p>
+                <p>Likes: {{ game_likes }}</p>
+            </div>
+            <div class="col-6">
+                <img [src]="transform()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="button" (click)="toggleModal()" class="btn btn-danger">Close</button>
+                <button type="button" (click)="likeGame()" class="btn btn-info">Like Game</button>
+            </div>
+        </div>
     </div>
 </div>
