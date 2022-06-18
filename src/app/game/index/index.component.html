@@ -1,15 +1,13 @@
-
 <div class="container">
     <div class="row">
         <div class="col-3 grid" *ngFor="let game of games; let i = index">
-            <p>Name: {{game.name}}</p>
+            <p (click)="showGame(game.id)" >Name: <u>{{game.name}} </u></p>
             <p>Year: {{game.year}}</p>
             <p>Manufacturer: {{game.manufacturer}}</p>
-            <button type="button" (click)="showGame(game.id)" class="btn btn-info">show more</button>
         </div>
     </div>
 </div>
-
+<!-- modal -->
 <div class="show_element" *ngIf="display_show">
     <div class="modal-content">
         <div class="row">

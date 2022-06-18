@@ -15,11 +15,10 @@ export class IndexComponent implements OnInit {
   games?: Game[];
   game?: Game;
   display_show = false;
-  ip_address: String = "";
   selected_id: number = 0;
   game_likes: String = "";
+  ipAddress: String = "";
   image_path: any;
-  ipAddress = '';
 
   constructor(public gameService: GameService,
               private sanitizer: DomSanitizer,
@@ -60,8 +59,7 @@ export class IndexComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.image_path);
   }
 
-  getIPAddress()
-  {
+  getIPAddress(){
     this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
       this.ipAddress = res.ip;
     });
