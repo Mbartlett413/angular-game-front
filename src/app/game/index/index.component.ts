@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit {
   display_show = false;
   selected_id: number = 0;
   game_likes: String = "";
-  ipAddress: String = ""; 
+  ipAddress: String = "";
   image_path: String = "https://www.metalgearinformer.com/wp-content/uploads/2014/10/Figma-Metal-Gear-Solid-2-Snake-8.jpg";
 
   constructor(public gameService: GameService,
@@ -30,7 +30,8 @@ export class IndexComponent implements OnInit {
   }
 
   showGame(id: number) {
-    this.gameService.find(id).subscribe(data => { 
+    this.gameService.find(id).subscribe(data => {
+      console.log(data)
       this.display_show = true;
       this.game = data;
       this.selected_id = data.id;
