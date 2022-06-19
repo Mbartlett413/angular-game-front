@@ -30,13 +30,13 @@ export class IndexComponent implements OnInit {
   }
 
   showGame(id: number) {
-    this.gameService.find(id).subscribe(data => {
+    this.gameService.find(id).subscribe(data => { 
       this.display_show = true;
-      this.game = data.game;
-      this.selected_id = data.game.id;
-      this.game_likes = data.likes;
-      if( data.image != null ){
-        this.image_path = data.image;
+      this.game = data;
+      this.selected_id = data.id;
+      this.game_likes = data.likes_count;
+      if( data.image_url != null ){
+        this.image_path = data.image_url;
       }else{
         this.image_path = "https://www.metalgearinformer.com/wp-content/uploads/2014/10/Figma-Metal-Gear-Solid-2-Snake-8.jpg";
       }
@@ -45,10 +45,11 @@ export class IndexComponent implements OnInit {
 
   likeGame() {
     this.gameService.update(this.selected_id, this.ipAddress).subscribe(data => {
+      console.log(data)
       if(data.errors){
-        this.game_likes = data.errors[0]
+        this.game_likes = data.errors.ip_address
       }else{
-        this.game_likes = data;
+        this.game_likes = data.likes;
       }
     });
   }
