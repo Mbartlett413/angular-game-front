@@ -5,6 +5,5 @@ export interface Game {
   image: string;
   manufacturer: string;
   year: number;
-  active: boolean;
   created_at: string;
 }
