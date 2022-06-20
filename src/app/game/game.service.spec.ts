@@ -44,4 +44,14 @@ describe('GameService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(mockGame);
   });
+
+  it('create() should return an Observable<Game>', () => {
+    service.update(mockGame.id,'10.0.0.127').subscribe(game => {
+      expect(game).toEqual(mockGame);
+    });
+
+    const req = httpMock.expectOne('http://localhost:3000/games/' + mockGame.id + '/like');
+    expect(req.request.method).toBe('PATCH');
+    req.flush(mockGame);
+  });
 });

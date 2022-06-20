@@ -31,7 +31,6 @@ export class IndexComponent implements OnInit {
 
   showGame(id: number) {
     this.gameService.find(id).subscribe(data => {
-      console.log(data)
       this.display_show = true;
       this.game = data;
       this.selected_id = data.id;
@@ -46,7 +45,6 @@ export class IndexComponent implements OnInit {
 
   likeGame() {
     this.gameService.update(this.selected_id, this.ipAddress).subscribe(data => {
-      console.log(data)
       if(data.errors){
         this.game_likes = data.errors.ip_address
       }else{
